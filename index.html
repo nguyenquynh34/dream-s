@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Image Analysis</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .left {
+        flex: 50%;
+      }
+      .right {
+        flex: 50%;
+      }
+      .right .predictions {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload an Image</h1>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload">
+    </form>
+
+    {% if filename %}
+      <div class="container">
+        <div class="left">
+          <h2>Uploaded Image:</h2>
+          <img src="{{ url_for('uploaded_file', filename=filename) }}" style="max-width: 100%;">
+        </div>
+        <div class="right">
+          <div class="predictions">
+            <h2>Top Predictions for Places:</h2>
+            <ul>
+              {% for place, score in zip(top_places, top_scores_places) %}
+                <li>{{ place }}: {{ '%.2f'|format(score) }}%</li>
+              {% endfor %}
+            </ul>
+            <h2>Top Predictions for Emotions:</h2>
+            <ul>
+              {% for emotion, score in zip(top_emotions, top_scores_emotions) %}
+                <li>{{ emotion }}: {{ '%.2f'|format(score) }}%</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <h2>Prediction Results:</h2>
+          <img src="{{ url_for('uploaded_file', filename=chart) }}" style="max-width: 100%;">
+        </div>
+      </div>
+    {% endif %}
+  </body>
+</html>
