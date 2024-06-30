@@ -1,3 +1,2 @@
 # dream-s
-no description
-hello
+Our project aims to develop a system to recognize, detect, and categorize people in images to understand customer interactions with Heineken. By leveraging zero-shot learning, CLIP, and Grounding DINO, we identify and analyze how customers engage with Heineken products across various environments. Key features include real-time image processing, multi-subject recognition, and precise object detection. We have enhanced the existing project by addressing multi-output issues in CLIP, improving detection accuracy, and integrating a user-friendly interface for data visualization and analysis. These advancements provide valuable insights into customer behavior, enhancing marketing and engagement strategies.
